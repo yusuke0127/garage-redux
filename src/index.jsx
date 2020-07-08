@@ -13,6 +13,7 @@ import App from './components/app';
 import carsReducer from './reducers/cars_reducer';
 import CarsIndex from './containers/cars_index';
 import CarsNew from './containers/cars_new';
+import CarShow from './containers/car_show';
 import cars from './cars';
 
 const garageReducer = (state = null) => state;
@@ -39,6 +40,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/" exact component={CarsIndex} />
           <Route path="/cars/new" exact component={CarsNew} />
+          <Route path="/cars/:id" component={CarShow} />
         </Switch>
       </div>
     </Router>

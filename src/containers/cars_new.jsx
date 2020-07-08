@@ -3,20 +3,27 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { createCar } from '../actions';
 
+const required = value => value ? undefined : 'Required';
+const plateNumber = value =>
+  value && !/^[A-Z0-9]+/.test(value) ? 'Invalid plate number(Capitalized letter and no special characters allowed' : undefined;
+
 class CarsNew extends Component {
   onSubmit = (values) => {
     console.log(values);
     this.props.createCar(values, (car) => {
-      this.props.history.push('/'); // Navigate after submit return post;
+      this.props.history.push('/'); // Navigate after submit
+      return car;
     });
   }
-  renderField(field) {
+
+  renderField({ input, label, type, meta: { touched, error, warning } }) {
     return (
-      <div className="form-group"> <label>{field.label}</label>
+      <div className="form-group"> <label>{label}</label>
         <input
           className="form-control"
-          type={field.type} {...field.input}
+          type={type} {...input}
         />
+        {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
       </div>
     );
   }
@@ -29,24 +36,30 @@ class CarsNew extends Component {
             name="brand"
             type="text"
             component={this.renderField}
+            validate={[required]}
+
           />
           <Field
             className="form-control"
             label="Model"
             name="model"
             component={this.renderField}
+            validate={[required]}
           />
           <Field
             className="form-control"
             label="Owner"
             name="owner"
             component={this.renderField}
+            validate={[required]}
+
           />
           <Field
             className="form-control"
             label="Plate"
             name="plate"
             component={this.renderField}
+            validate={[required, plateNumber]}
           />
           <button className="btn btn-danger" type="submit" disabled={this.props.pristine || this.props.submitting}>
               Create car
