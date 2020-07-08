@@ -10,9 +10,9 @@ class CarsIndex extends Component {
     this.props.fetchCars(this.props.garage);
   }
 
-  componentDidUpdate() {
-    this.props.fetchCars(this.props.garage);
-  }
+  // componentDidUpdate() {
+  //   this.props.fetchCars(this.props.garage);
+  // }
 
   renderCars() {
     return this.props.cars.map((car) => {

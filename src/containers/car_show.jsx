@@ -15,7 +15,7 @@ class CarShow extends Component {
   deleteCar = () => {
     console.log(this.props.car.id);
     this.props.deleteCar(this.props.car.id);
-    this.props.history.push('/')
+    this.props.history.push('/');
   }
 
   render() {

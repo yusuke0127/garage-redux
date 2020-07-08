@@ -14,7 +14,7 @@ import carsReducer from './reducers/cars_reducer';
 import CarsIndex from './containers/cars_index';
 import CarsNew from './containers/cars_new';
 import CarShow from './containers/car_show';
-import cars from './cars';
+// import cars from './cars';
 
 const garageReducer = (state = null) => state;
 
