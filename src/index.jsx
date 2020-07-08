@@ -18,7 +18,7 @@ const garageReducer = (state = null) => state;
 
 const initialState = {
   garageName: `garage${Math.floor(10 + (Math.random() * 90))}`, // prompt("Type in your Garage name"
-  cars: { cars }
+  cars: cars
 };
 
 const reducers = combineReducers({
