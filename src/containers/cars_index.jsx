@@ -5,6 +5,11 @@ import { connect } from 'react-redux';
 import { fetchCars } from '../actions';
 
 class CarsIndex extends Component {
+  componentDidMount() {
+    console.log(this.props);
+    this.props.fetchCars(this.props.garage);
+  }
+
   renderCars() {
     return this.props.cars.map((car) => {
       return (
@@ -20,7 +25,6 @@ class CarsIndex extends Component {
   }
 
   render () {
-    console.log(this.props);
     return (
       <div>
         <div className="first-row">
@@ -36,7 +40,10 @@ class CarsIndex extends Component {
 
 
 function mapStateToProps(state) {
-  return { cars: state.cars };
+  return {
+    cars: state.cars,
+    garage: state.garageName
+  };
 }
 
 function mapDispatchToProps(dispatch) {
