@@ -38,7 +38,7 @@ class CarShow extends Component {
 
 function mapStateToProps(state, ownProps) {
   const idFromUrl = parseInt(ownProps.match.params.id, 10);
-  const car = state.cars.find(car => car.id === idFromUrl);
+  const car = state.cars.find(c => c.id === idFromUrl);
   return { car };
 }
 
